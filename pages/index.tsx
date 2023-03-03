@@ -23,9 +23,9 @@ import AjaxCall from 'utility/AjaxCall'
 import CSS from 'utility/CSStool'
 import DataCall from 'utility/DataCallJS'
 import regularStrainsES6 from 'utility/regularStrainsES6'
+import allstrainsES6func from 'utility/allstrainsES6'
 
 
-import Document, { Html, Head, Main, NextScript } from 'next/document'
 
 
                     
@@ -39,6 +39,9 @@ export default  function Strain ( props:any, context ) {
 
     let localhost = props.localhost
     let ALLstrainPOSTurl = props.ALLstrainPOSTurl
+    let ALLstrainGETurl = props.ALLstrainGETurl
+    console.log('ALLstrainGETurl')
+    console.log(ALLstrainGETurl)
 
     const TextContext = createContext('')
     
@@ -68,21 +71,24 @@ export default  function Strain ( props:any, context ) {
   }, [currentUser])
 
    useEffect( () => {
-      (async() => {
-          // const strainfunc = async () => {
-    $.ajax({
-      method: 'post',
-      url: '/api/strains/allStrain',
-      data: {
-       key: 'all'
-      }
-    }).then( (msg) => {
-      console.log('msg we are in the .then() statement')
-      console.log(msg)      
-    })
+    
+    (async() => {
+      await allstrainsES6func(ALLstrainGETurl, 'postALL');
     })()
-    // }
-   }, [])
+    //   (async() => {
+    // $.ajax({
+    //   method: 'post',
+    //   url: '/api/strains/allStrain',
+    //   data: {
+    //    key: 'all'
+    //   }
+    // }).then( (msg) => {
+    //   console.log('msg we are in the .then() statement')
+    //   console.log(msg)      
+    // })
+    // })()
+  }, [])
+  // }
 
 
     const globalstrain = props.globalstate
@@ -156,8 +162,16 @@ export default  function Strain ( props:any, context ) {
           opacity: '0.3'
         })
       }, 2000)
-
     }
+
+    const testfunc = async () => {
+        console.log('hey were testing');
+        // let allstrains = await allstrainsES6func(ALLstrainGETurl, 'getALL')
+        let allstrains = await allstrainsES6func(ALLstrainGETurl, 'postALL')
+        console.log('allstrains')
+        console.log(allstrains)
+    }
+
 
     return (
 
@@ -243,7 +257,7 @@ export default  function Strain ( props:any, context ) {
               contextprops={context}
               />
               }
-                 
+              <button onClick={testfunc} style={{ height: '85px', width: '85px', backgroundColor: 'powderblue  ', borderRadius: '50%', }}></button>
           </Container>
           </>
             
@@ -257,12 +271,14 @@ export async function getServerSideProps(context:any) {
   // let pokeurl = `https://pokeapi.co/api/v2/pokemon/`    
   let predata = await fetch(new URL(`${url}/api/strains/strain`))            
   let serverdata = await predata.json()     
-  
+
+  let ALLstrainGETurl = `${url}/api/strains/strain`
   let ALLstrainPOSTurl = `${url}/api/strains/allStrain`
   
 return {
 props: {
-  serverdata, localhost, ALLstrainPOSTurl
+  // localhost, ALLstrainPOSTurl, allStrainGETurl
+  serverdata, localhost, ALLstrainPOSTurl, ALLstrainGETurl
 }
 };
 }
