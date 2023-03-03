@@ -282,8 +282,8 @@ export async function getServerSideProps(context:any) {
   let url:any = await ReturnUrl(context);    
   let localhost = url
   // let pokeurl = `https://pokeapi.co/api/v2/pokemon/`    
-  let predata = await fetch(new URL(`${url}/api/strains/strain`))            
-  let serverdata = await predata.json()     
+  // let predata = await fetch(new URL(`${url}/api/strains/strain`))            
+  // let serverdata = await predata.json()     
 
   let ALLstrainGETurl = `${url}/api/strains/strain`
   let ALLstrainPOSTurl = `${url}/api/strains/allStrain`
@@ -291,7 +291,7 @@ export async function getServerSideProps(context:any) {
 return {
 props: {
   // localhost, ALLstrainPOSTurl, allStrainGETurl
-  serverdata, localhost, ALLstrainPOSTurl, ALLstrainGETurl
+  localhost, ALLstrainPOSTurl, ALLstrainGETurl
 }
 };
 }
