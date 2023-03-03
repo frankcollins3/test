@@ -24,6 +24,7 @@ import CSS from 'utility/CSStool'
 import DataCall from 'utility/DataCallJS'
 import regularStrainsES6 from 'utility/regularStrainsES6'
 import allstrainsES6func from 'utility/allstrainsES6'
+import APIcall from 'utility/APIcall'
 
 
 
@@ -51,6 +52,8 @@ export default  function Strain ( props:any, context ) {
     const [textState, setTextState] = useState('')
     const [displayText, setDisplayText] = useState('')
 
+    const [serverdata2, setServerdata2] = useState([{strain: 'white widow', strainId: 1}, {strain: 'Gorilla Glue #4', strainId: 2}, {strain: 'mimosa', strainId: 3}  ])
+
     const {currentUser, currentUserName, currentuseridset, currentUserId, currentusernameset, noUser, nouserset, userStrains, userstrainset } = useGame()
 
     useEffect( () => {
@@ -74,6 +77,16 @@ export default  function Strain ( props:any, context ) {
     
     (async() => {
       await allstrainsES6func(ALLstrainGETurl, 'postALL');
+      let prestrains = await allstrainsES6func(ALLstrainGETurl, 'getALL');    
+      let allstrainsGET = prestrains.data.getdata
+      let apistrains = await APIcall('all', null, null)
+
+
+
+      console.log('allstrainsGET')
+      console.log(allstrainsGET)
+      setServerdata2(apistrains)
+      // setServerdata2(['yeah', 'thats', 'fine'])
     })()
     //   (async() => {
     // $.ajax({
@@ -91,10 +104,8 @@ export default  function Strain ( props:any, context ) {
   // }
 
 
-    const globalstrain = props.globalstate
-    let userId = currentUser ? currentUser.id : ''
-    console.log('userId from over here!')
-    console.log(userId)
+    const globalstrain = props.globalstate;
+    let userId = currentUser ? currentUser.id : '';
 
     const classList:string = [styles.Page, 'Column'].join(" ")
     const textClasses:string = [styles.FontSizeTest, styles.BorderTest].join(" ");
@@ -170,6 +181,7 @@ export default  function Strain ( props:any, context ) {
         let allstrains = await allstrainsES6func(ALLstrainGETurl, 'postALL')
         console.log('allstrains')
         console.log(allstrains)
+
     }
 
 
@@ -199,7 +211,8 @@ export default  function Strain ( props:any, context ) {
                 textState={textState} setTextState={setTextState}
                 displayText={displayText} setDisplayText={setDisplayText}
                 clickedStrain={clickedStrain} setClickedStrain={setClickedStrain}       
-                serverdata={props.serverdata}      
+                // serverdata={props.serverdata}      
+                serverdata={serverdata2}      
                 url={props.url} setUrl={props.setUrl}
                 allStrains={props.allStrains} setAllStrains={props.setAllStrains}
                 currentStrain={props.currentStrain} setCurrentStrain={props.setCurrentStrain}                            
@@ -269,8 +282,8 @@ export async function getServerSideProps(context:any) {
   let url:any = await ReturnUrl(context);    
   let localhost = url
   // let pokeurl = `https://pokeapi.co/api/v2/pokemon/`    
-  // let predata = await fetch(new URL(`${url}/api/strains/strain`))            
-  // let serverdata = await predata.json()     
+  let predata = await fetch(new URL(`${url}/api/strains/strain`))            
+  let serverdata = await predata.json()     
 
   let ALLstrainGETurl = `${url}/api/strains/strain`
   let ALLstrainPOSTurl = `${url}/api/strains/allStrain`
@@ -278,7 +291,7 @@ export async function getServerSideProps(context:any) {
 return {
 props: {
   // localhost, ALLstrainPOSTurl, allStrainGETurl
-  localhost, ALLstrainPOSTurl, ALLstrainGETurl
+  serverdata, localhost, ALLstrainPOSTurl, ALLstrainGETurl
 }
 };
 }
