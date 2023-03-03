@@ -1,7 +1,8 @@
 async function ReturnUrl (context:any) {    
 
     if (process.env.NODE_ENV === "production") {
-        return `https://${context.req.rawHeaders[1]}`;
+        return 'https://test-coral-two.vercel.app'
+        // return `https://${context.req.rawHeaders[1]}`;
       } 
       else  { 
             // this gets rid of the error
