@@ -5,7 +5,6 @@ import Col from 'react-bootstrap/Col'
 import ErrorCont from 'styles/Error'
 import styles from 'styles/Misc.module.sass'
 import Random from 'utility/Randomizer'
-import Resize from 'hooks/MediaQuery'
 
 export default function Error (props) {    
     // console.log('props')
