@@ -1,4 +1,4 @@
-import Strain from "pages/strain"
+// import Strain from "pages/strain"
 let i = 0; 
 export default async function SeeAndSave(api, apilength, textState:string, setTextState:any ) {    
     if (api.includes('strain') && api.includes('dominant') && api.includes ('taste')) {
