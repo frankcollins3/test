@@ -124,13 +124,10 @@ export default  function AllStrainContainer(props:any) {
     // let db:any = props.serverdata.getdata
     
     let strainmap = db.map( (item:any, index:number) => {  
-        console.log('item')      
-        console.log(item)      
+        
         let strain = item.strain
         // let id:(number|string) = item.strainId  //oh wow was using sequelize table id getting wrong id.
-        let id = item.strainId
-        console.log('id')
-        console.log(id)
+        let id = item.strainId        
 
         return (        
             <div key={'column' + index} className="Column">                
