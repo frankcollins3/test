@@ -1,0 +1,15 @@
+.Container {
+    padding: 0 2rem; 
+    min-height: 100vh;  
+    min-width: 100vw;
+    background-color: rgb(62, 50, 32);
+    position: fixed;
+}
+
+.Column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
