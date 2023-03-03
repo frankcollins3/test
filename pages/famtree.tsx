@@ -5,7 +5,7 @@ import Axios from 'axios'
 
 // * utility functions
 import ReturnUrl from 'utility/ReturnUrl'
-import DataCall from 'utility/DataCall'
+// import DataCall from 'utility/DataCall'
 import APIcall from 'utility/APIcall'
 import Random from 'utility/Randomizer'
 import Regex from 'utility/MasterRegex'
