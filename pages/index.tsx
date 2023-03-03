@@ -41,8 +41,8 @@ export default  function Strain ( props:any, context ) {
     let localhost = props.localhost
     let ALLstrainPOSTurl = props.ALLstrainPOSTurl
     let ALLstrainGETurl = props.ALLstrainGETurl
-    console.log('ALLstrainGETurl')
-    console.log(ALLstrainGETurl)
+    // console.log('ALLstrainGETurl')
+    // console.log(ALLstrainGETurl)
 
     const TextContext = createContext('')
     
@@ -76,30 +76,16 @@ export default  function Strain ( props:any, context ) {
    useEffect( () => {
     
     (async() => {
-      await allstrainsES6func(ALLstrainGETurl, 'postALL');
-      let prestrains = await allstrainsES6func(ALLstrainGETurl, 'getALL');    
-      let allstrainsGET = prestrains.data.getdata
-      let apistrains = await APIcall('all', null, null)
-
-
-
-      console.log('allstrainsGET')
-      console.log(allstrainsGET)
-      setServerdata2(apistrains)
-      // setServerdata2(['yeah', 'thats', 'fine'])
+    // await allstrainsES6func(ALLstrainGETurl, 'postALL');
+      // let prestrains = await allstrainsES6func(ALLstrainGETurl, 'getALL'); 
+      // console.log('prestrains right here!')   
+      // console.log(prestrains)   
+      // let allstrainsGET = prestrains.data.getdata
+      // let apistrains = await APIcall('all', null, null)
+    
+      // setServerdata2(apistrains)
     })()
-    //   (async() => {
-    // $.ajax({
-    //   method: 'post',
-    //   url: '/api/strains/allStrain',
-    //   data: {
-    //    key: 'all'
-    //   }
-    // }).then( (msg) => {
-    //   console.log('msg we are in the .then() statement')
-    //   console.log(msg)      
-    // })
-    // })()
+
   }, [])
   // }
 
