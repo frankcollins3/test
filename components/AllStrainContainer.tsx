@@ -120,10 +120,17 @@ export default  function AllStrainContainer(props:any) {
     
 
     const joinedClassStr = [styles.ul, styles.FlexBottom].join(" ")    
-    let db:any = props.serverdata.getdata
-    let strainmap = db.map( (item:any, index:number) => {        
+    let db:any = props.serverdata
+    // let db:any = props.serverdata.getdata
+    
+    let strainmap = db.map( (item:any, index:number) => {  
+        console.log('item')      
+        console.log(item)      
         let strain = item.strain
-        let id:(number|string) = item.strainId  //oh wow was using sequelize table id getting wrong id.
+        // let id:(number|string) = item.strainId  //oh wow was using sequelize table id getting wrong id.
+        let id = item.strainId
+        console.log('id')
+        console.log(id)
 
         return (        
             <div key={'column' + index} className="Column">                
@@ -136,17 +143,20 @@ export default  function AllStrainContainer(props:any) {
             <Card.Body>
 
             <li  
-            id={id.toString()}
-            onClick={strainClick}
-            style={{ textAlign: 'center' }}
-            key={id}> {strain} </li>                          
+             id={typeof id === 'string' ? id.toString() : id}
+             // id={id.toString() ? id.toString() : item.strainId}
+             onClick={strainClick}
+             style={{ textAlign: 'center' }}
+             key={id}> {strain} </li>                          
             </Card.Body>
             </Card>
             :
             <ul>
 
                 <li
-                 id={id.toString()}
+                id={typeof id === 'string' ? id.toString() : id}
+                //  id={id.toString()}
+                // id={id.toString() ? id.toString() : item.strainId}
                  onClick={strainClick}
 
                  style={{ 
