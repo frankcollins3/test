@@ -123,12 +123,13 @@ export async function getServerSideProps(context:any) {
     // let randomvalue = await Random(arraystate)
     let randomvalue = await randomNumber(index1, indexlast)
 
-        let predata = await fetch(new URL(`${url}/api/strains/strain/${randomvalue}`))                    
-        let serverdata = await predata.json()        
-
+        // let predata = await fetch(new URL(`${url}/api/strains/strain/${randomvalue}`))                    
+        // let serverdata = await predata.json()        
+        let lunch = 'yes'
   return {
   props: {
-    serverdata    
+    // serverdata    
+    lunch
   }
   };
   }
