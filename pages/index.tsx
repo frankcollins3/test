@@ -259,7 +259,7 @@ export default  function Strain ( props:any, context ) {
               contextprops={context}
               />
               }
-              <button onClick={testfunc} style={{ height: '25px', width: '25px', backgroundColor: 'papayawhip', borderRadius: '50%', }}></button>
+              {/* <button onClick={testfunc} style={{ height: '25px', width: '25px', backgroundColor: 'papayawhip', borderRadius: '50%', }}></button> */}
           </Container>
           </>
             
