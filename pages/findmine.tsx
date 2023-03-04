@@ -238,8 +238,8 @@ export async function getServerSideProps(context:any) {
     let url:any = await ReturnUrl(context);   
     let urlbuild = `${url}/api/strains/strain`
     let urlagain = url 
-    let predata = await fetch(new URL(`${url}/api/strains/strain`))            
-    let data = await predata.json()   
+    // let predata = await fetch(new URL(`${url}/api/strains/strain`))            
+    // let data = await predata.json()   
     
     let userStrainUrl = `${url}/api/strains/getuserstrains`
     let userStrainUrlAgain = userStrainUrl
@@ -259,7 +259,8 @@ export async function getServerSideProps(context:any) {
         
     return {
         props: {
-            data, urlbuild, urlagain, userStrainUrl, userStrainUrlAgain, getIDurl, usernamesForIDurl, postMINEurl, getALLminesURL, deleteMinesURL, ALLusersGET, userStrainPost, digsURL
+             urlbuild, urlagain, userStrainUrl, userStrainUrlAgain, getIDurl, usernamesForIDurl, postMINEurl, getALLminesURL, deleteMinesURL, ALLusersGET, userStrainPost, digsURL
+            // data, urlbuild, urlagain, userStrainUrl, userStrainUrlAgain, getIDurl, usernamesForIDurl, postMINEurl, getALLminesURL, deleteMinesURL, ALLusersGET, userStrainPost, digsURL
     }
   };
   }
