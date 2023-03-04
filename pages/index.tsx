@@ -61,8 +61,8 @@ export default  function Strain ( props:any, context ) {
       const checkuser = async () => {
         let currentusername =   window.localStorage.getItem('currentUserName')
         let currentuserid =  window.localStorage.getItem('currentUserId')
-        let prestrains = window.localStorage.getItem('myStrains')          
-        let splitId = prestrains?.split(',')        
+        let prestrains = window.localStorage.getItem('myStrains') || ''
+        let splitId = prestrains?.split(',') || ['', '', '']         
         
         let filteredId = await splitId?.filter( strainsId => strainsId !== ',' && strainsId.length === 1)      
                                          
@@ -77,13 +77,16 @@ export default  function Strain ( props:any, context ) {
     
     (async() => {
     // await allstrainsES6func(ALLstrainGETurl, 'postALL');
-      // let prestrains = await allstrainsES6func(ALLstrainGETurl, 'getALL'); 
-      // console.log('prestrains right here!')   
-      // console.log(prestrains)   
-      // let allstrainsGET = prestrains.data.getdata
-      // let apistrains = await APIcall('all', null, null)
+      let prestrains = await allstrainsES6func(ALLstrainGETurl, 'getALL'); 
+      console.log('prestrains')
+      console.log(prestrains)
+      
+      // // let allstrainsGET = prestrains.data.getdata
+      // let allstrainsGET = prestrains.getdata
+      
+      let apistrains = await APIcall('all', null, null)
     
-      // setServerdata2(apistrains)
+      setServerdata2(prestrains)
     })()
 
   }, [])
@@ -96,10 +99,10 @@ export default  function Strain ( props:any, context ) {
     const classList:string = [styles.Page, 'Column'].join(" ")
     const textClasses:string = [styles.FontSizeTest, styles.BorderTest].join(" ");
     
-    const access = async (context:any) => {             
-    let ajaxstraindata = await DataCall('axios', `${url}/api/strains/allStrain`, null) // /pages/api/getAllStrains      
-    let url:string = await ReturnUrl(context);        
-  }
+    // const access = async (context:any) => {             
+    // let ajaxstraindata = await DataCall('axios', `${url}/api/strains/allStrain`, null) // /pages/api/getAllStrains      
+    // let url:string = await ReturnUrl(context);        
+  // }
     
     const returnUrl = async (context:any) => { 
       let url:string = await ReturnUrl(context)      
@@ -163,8 +166,8 @@ export default  function Strain ( props:any, context ) {
 
     const testfunc = async () => {
         console.log('hey were testing');
-        // let allstrains = await allstrainsES6func(ALLstrainGETurl, 'getALL')
-        let allstrains = await allstrainsES6func(ALLstrainGETurl, 'postALL')
+        let allstrains = await allstrainsES6func(ALLstrainGETurl, 'getALL')
+        // let allstrains = await allstrainsES6func(ALLstrainGETurl, 'postALL')
         console.log('allstrains')
         console.log(allstrains)
 
@@ -256,7 +259,7 @@ export default  function Strain ( props:any, context ) {
               contextprops={context}
               />
               }
-              <button onClick={testfunc} style={{ height: '85px', width: '85px', backgroundColor: 'powderblue  ', borderRadius: '50%', }}></button>
+              <button onClick={testfunc} style={{ height: '25px', width: '25px', backgroundColor: 'papayawhip', borderRadius: '50%', }}></button>
           </Container>
           </>
             
