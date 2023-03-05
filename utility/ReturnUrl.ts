@@ -13,7 +13,7 @@ async function ReturnUrl (context) {
       console.log('httpvar')
       console.log(httpvar)
 
-        return 'hey random address/'
+        return httpvar
         // return httpvar
         // console.log('window')
         // console.log(window)
