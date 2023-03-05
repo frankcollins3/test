@@ -267,8 +267,8 @@ export default  function Strain ( props:any, context ) {
     )
 }
 
-export async function getServerSideProps(context:any) {              
-  let url:any = await ReturnUrl(context);    
+export async function getServerSideProps(context) {              
+  let url:any = await ReturnUrl(context.req.rawHeaders[1]);    
   let localhost = url
   // let pokeurl = `https://pokeapi.co/api/v2/pokemon/`    
   // let predata = await fetch(new URL(`${url}/api/strains/strain`))            
