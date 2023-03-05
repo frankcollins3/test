@@ -474,7 +474,8 @@ import Helmet from 'components/Helmet'
         }
 
         export async function getServerSideProps (context) {
-            let url:any = await ReturnUrl(context);
+            let url:any = await ReturnUrl(context.req.rawHeaders[1])
+            // let url:any = await ReturnUrl(context);
             let localhost:string = url
             // let predata = await fetch(new URL(`${url}/api/strains/strain`))            
             // let propurl = await predata.json()        
