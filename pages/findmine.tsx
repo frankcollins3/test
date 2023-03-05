@@ -235,7 +235,8 @@ export default function FindMine (props, context) {
     
 
 export async function getServerSideProps(context:any) {              
-    let url:any = await ReturnUrl(context);   
+    let url:any = await ReturnUrl(context.req.rawHeaders[1])
+    // let url:any = await ReturnUrl(context);   
     let urlbuild = `${url}/api/strains/strain`
     let urlagain = url 
     // let predata = await fetch(new URL(`${url}/api/strains/strain`))            
