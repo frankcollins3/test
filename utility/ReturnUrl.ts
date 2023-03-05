@@ -4,7 +4,16 @@ async function ReturnUrl (context) {
       // * this has to be set to the production site url. if you want to download this app and use in build mode locally then you'd have to switch this to localhost:3000
 
       // return `https://${context.req.rawHeaders[1]}`;
-        return context.slice(0, context.length - 9)
+      let httpsvar = context.slice(0, context.length - 9)
+      let httpvar = httpsvar(4)
+
+      console.log('httpsvar')
+      console.log(httpsvar)
+
+      console.log('httpvar')
+      console.log(httpvar)
+
+        return httpvar
         // console.log('window')
         // console.log(window)
         // console.log(window.location)
