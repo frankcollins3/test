@@ -13,11 +13,11 @@ async function ReturnUrl (context) {
 
       // console.log('httpvar')
       // console.log(httpvar)
-      console.log('context')
-      console.log(context)
+      // console.log('context')
+      // console.log(context)
 
-        // return context;
-        return "http://localhost:3000";
+        return context.slice(0, context.length - 9);
+        // return "http:// localhost:3000";
 
         // return httpvar
         // return httpvar
