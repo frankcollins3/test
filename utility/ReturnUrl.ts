@@ -1,4 +1,4 @@
-async function ReturnUrl (context) {    
+async function ReturnUrl (context:any) {    
 
     if (process.env.NODE_ENV === "production") {
       // * this has to be set to the production site url. if you want to download this app and use in build mode locally then you'd have to switch this to localhost:3000
@@ -16,7 +16,9 @@ async function ReturnUrl (context) {
       // console.log('context')
       // console.log(context)
 
-        return context.slice(0, context.length - 8);
+        return context
+        // return context.slice(0, context.length - 8);
+
         // return "http:// localhost:3000";
 
         // return httpvar
