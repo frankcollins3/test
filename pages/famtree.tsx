@@ -103,7 +103,8 @@ const mapStateToProps = (game) => {
 }
 
 export async function getServerSideProps(context:any) {              
-    let url:any = await ReturnUrl(context);        
+    let url:any = await ReturnUrl(context.req.rawHeaders[1])
+    // let url:any = await ReturnUrl(context);        
     let data = await APIcall('all', null, null)
     let apilen:number = data.length
 
