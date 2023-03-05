@@ -16,7 +16,7 @@ async function ReturnUrl (context) {
       // console.log('context')
       // console.log(context)
 
-        return context.slice(0, context.length - 9);
+        return context.slice(0, context.length - 8);
         // return "http:// localhost:3000";
 
         // return httpvar
