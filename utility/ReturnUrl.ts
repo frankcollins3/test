@@ -13,7 +13,7 @@ async function ReturnUrl (context) {
       console.log('httpvar')
       console.log(httpvar)
 
-        return 'https://minenugget-bgydoo40k-frankcollins3.vercel.app/'
+        return 'hey random address/'
         // return httpvar
         // console.log('window')
         // console.log(window)
