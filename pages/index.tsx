@@ -76,19 +76,18 @@ export default  function Strain ( props:any, context ) {
    useEffect( () => {
     
     (async() => {
-    // await allstrainsES6func(ALLstrainGETurl, 'postALL');
+      let postStrains = await allstrainsES6func(ALLstrainGETurl, 'postALL');
       let prestrains = await allstrainsES6func(ALLstrainGETurl, 'getALL'); 
       console.log('prestrains')
-      console.log(prestrains)
-      
-      // // let allstrainsGET = prestrains.data.getdata
-      // let allstrainsGET = prestrains.getdata
-      
-      let apistrains = await APIcall('all', null, null)
-    
-      setServerdata2(prestrains)
-    })()
+      console.log(prestrains)      
 
+      console.log('postStrains')
+      console.log(postStrains)
+
+      // let allstrainsGET = prestrains.getdata      
+      let apistrains = await APIcall('all', null, null)    
+      await setServerdata2(prestrains)
+    })()
   }, [])
   // }
 
@@ -167,6 +166,7 @@ export default  function Strain ( props:any, context ) {
     const testfunc = async () => {
         console.log('hey were testing');
         let allstrains = await allstrainsES6func(ALLstrainGETurl, 'getALL')
+        
         // let allstrains = await allstrainsES6func(ALLstrainGETurl, 'postALL')
         console.log('allstrains')
         console.log(allstrains)
@@ -178,8 +178,6 @@ export default  function Strain ( props:any, context ) {
 
       <>
         
-        
-
           <Container 
           style={ { minWidth: '100%'}}
           className={classList}>
@@ -259,7 +257,7 @@ export default  function Strain ( props:any, context ) {
               contextprops={context}
               />
               }
-              {/* <button onClick={testfunc} style={{ height: '25px', width: '25px', backgroundColor: 'papayawhip', borderRadius: '50%', }}></button> */}
+              <button onClick={testfunc} style={{ height: '25px', width: '25px', backgroundColor: 'papayawhip', borderRadius: '50%', }}></button>
           </Container>
           </>
             
