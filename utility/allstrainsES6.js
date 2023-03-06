@@ -34,7 +34,7 @@ export default async function allstrainsES6func (url, method) {
                     return this.POSTallstrains();
                 }
                 async POSTallstrains() {
-                        $.ajax({
+                        return $.ajax({
                             method: 'post',
                             url: '/api/strains/allStrain',
                             data: {
@@ -46,6 +46,7 @@ export default async function allstrainsES6func (url, method) {
                          }).catch( (err) => {
                             console.log('err we are in the error!')
                             console.log(err)
+                            return err
                          })
                 }
 
