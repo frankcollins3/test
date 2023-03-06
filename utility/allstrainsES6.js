@@ -43,14 +43,17 @@ export default async function allstrainsES6func (url, method) {
                         }).then( (msg) => {
                             console.log('msg we are in the .then() statement')
                             console.log(msg)      
+                         }).catch( (err) => {
+                            console.log('err we are in the error!')
+                            console.log(err)
                          })
                 }
 
             }
             if (method === 'getALL') {
-                let allstrains = await new allstrainsES6(url).allstrains;
-                console.log(allstrains)
-                return allstrains
+                let getstrains = await new allstrainsES6(url).allstrains;
+                console.log(getstrains)
+                return getstrains
             }
             if (method === 'postALL') {
                 let allstrains = await new allstrainsES6(url).postallstrains;
