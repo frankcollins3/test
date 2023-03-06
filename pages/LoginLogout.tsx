@@ -220,10 +220,13 @@ import Helmet from 'components/Helmet'
                 let indexbucket = [{UsernameInputid:usernamevalue}, {PasswordInputid:passwordvalue}, {EmailInputid:emailvalue}, {AgeInputid:agevalue}]
                 // let indexbucket = [UsernameInputID, PasswordInputID, EmailInputID, AgeInputID]
                 let allIndex = await FindIndex(indexbucket, 'I')
-                console.log('allIndex')
-                console.log(allIndex)
+                // console.log('allIndex')
+                // console.log(allIndex)
                 
-                let newuser = await POSTuserCLASS(POSTuserREBUILD, allIndex)
+                // * sign up post USER!
+                let newuser = await POSTuserCLASS(props.POSTuserURL, allIndex)
+                // let newuser = await POSTuserCLASS(POSTuserREBUILD, allIndex)
+
                 goldClickSet('login')
                 console.log('newuser')
                 console.log(newuser)                            
@@ -484,12 +487,18 @@ import Helmet from 'components/Helmet'
             // let preuser = await fetch(new URL(`${url}/api/user/GetAllUsers`))
             // let newuser = await preuser.json()
 
-            let GETuserspecifyURL = url += '/api/user/GETspecifyuser'
-            let myStrainsForMyIdUrl = `${localhost}${'/api/strains/userStrainsForUsersId'}`
+            let GETuserspecifyURL = `${url}/api/user/GETspecifyuser`
+            // let GETuserspecifyURL = url += '/api/user/GETspecifyuser'
+            let myStrainsForMyIdUrl = `${url}/api/strains/userStrainsForUsersId`
+            // let myStrainsForMyIdUrl = `${localhost}/api/strains/userStrainsForUsersId`
+            let POSTuserURL = `${url}/api/user/POSTuser`
+
+            // let ALLstrainGETurl = `${url}/api/strains/strain`
+            // let ALLstrainPOSTurl = `${url}/api/strains/allStrain`
                                                 
             return {
                 props: {
-                    localhost, clientenv, GETuserspecifyURL, myStrainsForMyIdUrl
+                    localhost, clientenv, GETuserspecifyURL, myStrainsForMyIdUrl, POSTuserURL
                 }
             }
         }
